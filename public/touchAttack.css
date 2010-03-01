@@ -1,0 +1,175 @@
+@font-face { font-family: Sansation; src: url('/Sansation_Bold.ttf'); } 
+
+@-webkit-keyframes shrink {
+    0% {
+      width: 80px;
+      height: 80px;
+      margin: 0px;
+    }
+
+    100% {
+      width: 0px;
+      height: 0px;
+      margin: 40px;
+    } 
+}
+
+@-webkit-keyframes grow {
+    0% {
+      width: 0px;
+      height: 0px;
+      margin: 40px;
+    }
+
+    100% {
+      width: 80px;
+      height: 80px;
+      margin: 0px;
+    } 
+}
+
+body {
+  overflow:hidden;
+}
+
+* {
+  font-family: 'Arial Rounded MT Bold';
+  margin: 0px;
+  padding: 0px;
+}
+
+#timer, #power {
+  position: absolute; 
+  width: 480px; 
+  height: 10px;
+  background: #D2D2D2;
+  line-height: 10px;
+}
+
+#timer {
+  top: 290px; 
+}
+
+#power {
+  top: 0px;
+}
+
+#powerLevel {
+  background-color: #51B45B;
+  width: 0%;
+  -webkit-transition-property: width, background-color;
+  -webkit-transition-duration: 0.2s;
+}
+
+#timerLevel {
+  float: right;
+  background-color: #848883;
+  width: 100%;
+  -webkit-transition-property: width, background-color;
+  -webkit-transition-duration: 32.5s;
+}
+
+#game_board {
+  position: absolute;
+  top: 10px;
+  width: 480px;
+  height: 280px;
+  background: #262626;
+  -webkit-user-select: none;
+}
+
+#debug {
+  width: 480px;
+  height: 10px;
+  font-size: 9px;
+  background: #FFF;
+  display: none;
+}
+
+#menu, #results{
+  position: absolute;
+  top:-390px;
+  left:0px;
+  width: 480px;
+  -webkit-transition-property: top;
+  -webkit-transition-duration: 0.75s;
+}
+#menu {
+  top:0px;
+}
+#menu #startScreen, #results #resultsScreen {
+  position: relative;
+  top:70px;
+  background: black;
+  width: 300px;
+  margin: 0px auto;
+  color: #E4E4E4;
+  padding: 10px;
+  height: 150px;
+}
+#menu #startScreen #startButton{
+  position: relative;
+  top:40px;
+  left:0px;
+  width: 150px;
+  padding: 10px;
+  color: white;
+  margin: 0px auto;
+  text-align: center;
+  background: #51B45B;
+}
+#Level, #Thr, #Two, #One, #GO {
+  position: absolute;
+  font-size: 60px;
+  margin: 0px auto;
+  width: 480px;
+  text-align:center;
+}
+
+#Level{
+  color: #5E84BE;
+  top: 390px;
+}
+#Thr{
+  color: #DE4448;
+  top: 710px;
+}
+#Two{
+  color: #DECE67;
+  top: 1040px;
+}
+#One{
+  color: #51B45B;
+  top: 1360px;
+}
+#GO{
+  color: white;
+  top: 1700px;
+}
+#results {
+  top: -390px;
+}
+#results #resultsScreen #score {
+  width: 300px;
+  text-align: right;
+  font-size: 80px;
+  line-height: 105px;
+}
+#results #resultsScreen #score span {
+  padding: 0px;
+  margin: 0px;
+}
+#results #resultsScreen #score #blocked {
+  color: #DECE67;
+}
+#results #resultsScreen #score #total {
+  color: #51B45B;
+}
+#results #resultsScreen #reload {
+  width: 150px;
+  padding: 5px;
+  color: white;
+  margin: 0px 0px 0px 140px;
+  text-align: center;
+  background: #5E84BE;
+}

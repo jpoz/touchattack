@@ -123,27 +123,41 @@ body, html {
 }
 #menu #startScreen, #results #resultsScreen {
   position: relative;
-  top:70px;
+  top:60px;
   background: black;
-  width: 300px;
+  width: 390px;
   margin: 0px auto;
   color: #E4E4E4;
   padding: 10px;
   height: 150px;
 }
-#menu #startScreen #level1start, #menu #startScreen #level2start{
-  position: relative;
-  top:20px;
-  left:0px;
-  width: 150px;
-  padding: 10px;
+#menu #startScreen #instructions {
+  font-size: 14px;
+  color:#929292;
+}
+#menu #startScreen #levels {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px;
+}
+#menu #startScreen #levels .level{
+  width: 50px;
+  height: 30px;
+  display: inline-block;
+  line-height: 30px;
+  text-align: center;
   color: white;
-  margin: 0px auto;
+  margin: 5px 10px;
   text-align: center;
   background: #51B45B;
 }
 #menu #startScreen #level2start{
   top:40px;
+}
+#createdBy {
+  font-size: 14px;
+  color:#929292;
+  text-align: right;
 }
 #Level, #Thr, #Two, #One, #GO {
   position: absolute;
@@ -177,7 +191,7 @@ body, html {
   top: -390px;
 }
 #results #resultsScreen #score {
-  width: 300px;
+  width: 390px;
   text-align: right;
   font-size: 80px;
   line-height: 105px;
@@ -196,7 +210,7 @@ body, html {
   width: 150px;
   padding: 5px;
   color: white;
-  margin: 0px 0px 0px 140px;
+  margin: 0px 0px 0px 225px;
   text-align: center;
   background: #5E84BE;
 }

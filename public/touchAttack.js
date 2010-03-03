@@ -1,5 +1,5 @@
-// var mode = 'attack';
 var mode = 'defend';
+// var mode = 'attack';
 
 var gameSpeed = 1000; //time player has to hit box
 var boxSize = 80;
@@ -23,39 +23,43 @@ var green = '#51B45B'
 var yellow = '#DECE67'
 var blue = '#5E84BE'
 
+var powerDiv;
+var game_board;
+var gameStartTime;
+
 var attackSequence = [];
 var bench = [];
 var powerLevel = 100;
-var powerDiv;
-var game_board;
 var currentTouches = [];
 var gameActive = false;
-var gameStartTime;
 var blockedCount = 0;
 var totalCount = 0;
 
 var debugDiv;
 
 $(document).ready(function() {
-  
-  document.getElementById('level1start').ontouchend = function() {
-    TouchAttack.start(1);
-  }
-  
-  document.getElementById('level2start').ontouchend = function() {
-    TouchAttack.start(2);
-  }
-  
-  document.getElementById('reload').ontouchend = function() {
-    location.reload(true);
-  }
-  
   TouchAttack.setup();
 });
 
 
 var TouchAttack = {
   setup: function(attribute){
+    if (navigator.appVersion.indexOf('iPhone OS ') < 0) {
+      this.warn('Oops come back to this site on your iPhone or iPod Touch.');
+      return;
+    }
+    
+    document.addEventListener("touchmove", TouchAttack.disableTouch, false);
+    
+    if (!window.navigator.standalone ) { 
+      this.warn('Click the + and select "Add to Home Screen" to install TouchAttack');
+      return;
+    }
+    
+    window.onorientationchange = TouchAttack.onorientationchange;
+        
+    this.onorientationchange();
+    
     for (var i=benchSize;i>0;i--) {
       var square = $.engineer.make('attack_square', { 
         onTouchStartFuntion: TouchAttack[mode],
@@ -72,6 +76,40 @@ var TouchAttack = {
     debugDiv = $('#debug');
     
     powerDiv.css('width',powerLevel + '%');
+    
+    document.getElementById('level1start').ontouchend = function() {
+      TouchAttack.start(1);
+    }
+
+    document.getElementById('level2start').ontouchend = function() {
+      TouchAttack.start(2);
+    }
+
+    document.getElementById('reload').ontouchend = function() {
+      location.reload(true);
+    }
+  
+  },
+  warn: function(warning) {
+    window.scrollTo(0, 1)
+    $('#warning')
+      .fadeIn()
+      .find('#warningText')
+        .text(warning);
+  },
+  unwarn: function() {
+    window.scrollTo(0, 1)
+    $('#warning').fadeOut();
+    $('#game').fadeIn();
+  },
+  onorientationchange: function() {
+    var orientation = window.orientation;
+
+    if (0 == (90 % orientation)) {
+      TouchAttack.unwarn();
+    } else {
+      TouchAttack.warn('This game is meant to be played in landscape. Please rotate your device.');
+    }
   },
   start: function(level){
     $('#Level').text('Level ' + level);
@@ -178,16 +216,11 @@ var TouchAttack = {
     if (gameActive) {
       gameActive = false;
 
-      // alert('Game Over');
       game_board.ontouchstart = function() {};
       
       $('#results').css('top',0);
       $('#blocked').text(blockedCount);
       $('#total').text(totalCount);
-      // mode = 'defend'
-      // bench = [];
-      // 
-      // TouchAttack.start();
     }
   },
   disableTouch: function(event)

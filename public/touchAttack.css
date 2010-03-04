@@ -151,6 +151,12 @@ body, html {
   text-align: center;
   background: #51B45B;
 }
+
+#menu #startScreen #levels .disabled{
+  color: #727272;
+  background: #262626;
+}
+
 #menu #startScreen #level2start{
   top:40px;
 }

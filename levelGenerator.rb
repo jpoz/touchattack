@@ -10,4 +10,4 @@ class GameGenerator
   end
 end
 
-puts GameGenerator.new_game(250)
+puts GameGenerator.new_game(800)

@@ -33,5 +33,5 @@ class GameGenerator
 end
 
 10.times do |i|
-  puts GameGenerator.new_game(1000-(i*75), [6-i,1].max) 
+  puts GameGenerator.new_game(1000-(i*90), [6-i,1].max) 
 end

@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'httparty'
+require 'db'
 
 class GoogleClosureCompiler
   include HTTParty
@@ -26,4 +27,8 @@ end
 
 task :compile_console do
    puts GoogleClosureCompiler.new.compile
+end
+
+task :dbsetup do
+  puts DataMapper.auto_migrate!.inspect
 end

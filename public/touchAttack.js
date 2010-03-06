@@ -242,6 +242,8 @@ var TouchAttack = {
   },
   gameOver: function(lived) {
     if (gameActive) {
+      $.post("newScore", { level: currentLevel, score: blockedCount, total: totalCount } );
+      
       gameActive = false;
 
       game_board.ontouchstart = function() {};
